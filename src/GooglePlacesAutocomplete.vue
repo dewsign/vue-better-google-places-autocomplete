@@ -64,7 +64,7 @@ export default {
         fields: {
             type: Array,
             required: false,
-            default: [],
+            default: () => ([]),
         }
 
     },
