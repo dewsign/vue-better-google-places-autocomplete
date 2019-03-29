@@ -28,5 +28,12 @@
     "license": "MIT",
     "dependencies": {},
     "devDependencies": {
+        "@babel/core": "^7.3.3",
+        "@babel/preset-env": "7.3.1",
+        "rollup": "^1.1.2",
+        "rollup-plugin-babel": "^4.3.2",
+        "rollup-plugin-commonjs": "^9.2.2",
+        "rollup-plugin-vue": "^4.7.2",
+        "vue-template-compiler": "^2.6.10"
     }
 }
