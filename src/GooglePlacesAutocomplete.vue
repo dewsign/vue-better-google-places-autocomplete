@@ -61,6 +61,12 @@ export default {
             default: null,
         },
 
+        fields: {
+            type: Array,
+            required: false,
+            default: [],
+        }
+
     },
 
     computed: {
@@ -72,6 +78,14 @@ export default {
         searchValue() {
             return this.context.input
         },
+
+        resultField() {
+            return [
+                'formatted_address',
+                'geometry',
+                ...this.fields,
+            ]
+        }
 
     },
 
@@ -156,11 +170,7 @@ export default {
 
             placeService.getDetails({
                 placeId,
-                fields: [
-                    'place_id',
-                    'formatted_address',
-                    'geometry',
-                ],
+                fields: this.resultFields,
             }, (place) => {
                 this.$set(this.autocomplete, 'selected', place)
                 this.$set(this.context, 'input', description)
