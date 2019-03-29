@@ -120,14 +120,12 @@ export default {
         },
 
         inputHasReceivedFocus() {
-            console.log('focus')
             if (this.autocomplete.service) return
 
             this.initGoogleAutoCompleteService()
         },
 
         inputHasChanged() {
-            console.log('input')
             const { service, sessionToken } = this.autocomplete
             const { input } = this.context
             const { bounds } = this
