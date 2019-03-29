@@ -1,0 +1,32 @@
+{
+    "name": "vue-better-google-places-autocomplete",
+    "version": "0.0.1",
+    "description": "Google Places auto completion for Vue.js with better user experience",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dewsign/vue-better-google-places-autocomplete.git"
+    },
+    "main": "dist/index.js",
+    "files": [
+        "dist",
+        "readme.md"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "rollup -c",
+        "watch": "rollup -mwc",
+        "prepublish": "npm run build"
+    },
+    "keywords": [
+        "vue",
+        "google",
+        "places",
+        "map",
+        "autocomplete"
+    ],
+    "author": "Marco Mark <m2de@outlook.com>",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+    }
+}
