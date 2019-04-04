@@ -1,6 +1,6 @@
 {
     "name": "vue-better-google-places-autocomplete",
-    "version": "0.0.5",
+    "version": "0.1.0",
     "description": "Google Places auto completion for Vue.js with better user experience",
     "repository": {
         "type": "git",
