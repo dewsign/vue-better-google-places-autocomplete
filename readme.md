@@ -4,6 +4,8 @@ A Vue components to provide address search functionality with improved user expe
 
 ![Component Demo](./demo.gif)
 
+Example implementations can be found in our [demo repository](https://github.com/dewsign/examples-vue-better-google-places-autocomplete)
+
 ## Key Improvements
 
 * Allow enter key to select the first search result
