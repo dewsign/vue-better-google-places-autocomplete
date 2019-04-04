@@ -7,23 +7,27 @@
             :events="{ inputHasReceivedFocus, inputHasChanged }"
         >
             <input
-                type="text"
+                type="search"
                 v-model="context.input"
                 @focus="inputHasReceivedFocus"
                 @input="inputHasChanged"
                 @keydown.enter.prevent="selectItemFromList"
                 @keydown.down.prevent="shiftResultsSelection"
                 @keydown.up.prevent="unshiftResultsSelection"
+                class="vbga-input"
             >
         </slot>
-        <ul v-if="hasResults">
+        <ul v-if="hasResults" class="vbga-results">
             <li
                 v-for="(result, index) in autocomplete.results"
                 :class="{ highlighted: index === autocomplete.resultsHighlight }"
                 :key="result.id"
                 @click="resultHasBeenSelected(result)"
             >
-                <slot name="item" :place="result">
+                <slot name="item" :place="result" v-if="index !== autocomplete.resultsHighlight">
+                    {{ result.description }}
+                </slot>
+                <slot name="activeItem" :place="result" v-if="index === autocomplete.resultsHighlight">
                     {{ result.description }}
                 </slot>
             </li>
@@ -183,9 +187,3 @@ export default {
 
 }
 </script>
-
-<style scoped>
-    .highlighted {
-        background-color: lavender;
-    }
-</style>
