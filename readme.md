@@ -2,6 +2,8 @@
 
 A Vue components to provide address search functionality with improved user experience and advanced customisation options.
 
+![Component Demo](./demo.gif)
+
 ## Key Improvements
 
 * Allow enter key to select the first search result
