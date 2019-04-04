@@ -6,7 +6,7 @@ A Vue components to provide address search functionality with improved user expe
 
 * Allow enter key to select the first search result
 * Keyboard navigation
-* Fully customisable
+* Customisability
 * Simplified events handling
 
 ## Installation
@@ -17,7 +17,7 @@ npm i vue-better-google-places-autocomplete
 
 You can either import the package as a plugin or the components.
 
-Plugin usage
+### Plugin usage
 
 ```js
 import GooglePlacesAutocompletePlugin from 'vue-better-google-places-autocomplete'
@@ -25,7 +25,7 @@ import GooglePlacesAutocompletePlugin from 'vue-better-google-places-autocomplet
 Vue.use(GooglePlacesAutocompletePlugin)
 ```
 
-Component usage
+### Component usage
 
 ```js
 import { GooglePlacesAutocomplete } from 'vue-better-google-places-autocomplete'
@@ -33,7 +33,7 @@ import { GooglePlacesAutocomplete } from 'vue-better-google-places-autocomplete'
 Vue.component('google-places-autocomplete', GooglePlacesAutocomplete)
 ```
 
-## Prerequisites
+## Prerequisites
 
 The plugin assumes that the Google Maps API has been loaded and is accessible via `window.google`.
 
@@ -70,7 +70,6 @@ This event is fired when a user has selected an address from a search. This will
 
 This event is fired when the user has removed all text from the search box or clicked the clear icon. Useful for re-centering the results map for example.
 
-
 ## Customisation
 
 Two scoped-slots are provided to customise the search input box and the results
@@ -98,7 +97,7 @@ Two scoped-slots are provided to customise the search input box and the results
 
 ### Search Results
 
-The underlying `ul` and `li` are not accessible via slots but you can style them using the provided css class on the `ul`, `.vbga-results`.
+The underlying `ul` and `li` are not accessible via slots but you can style them using the provided css class on the `ul`, `.vbga-results`. Additionally, the currently selected list item will receive a `highlighted` class.
 
 ```html
 <google-places-autocomplete>
