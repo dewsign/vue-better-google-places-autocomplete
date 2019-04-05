@@ -51,7 +51,7 @@ export default {
                 selected: {},
             },
             context: {
-                input: '',
+                input: this.value,
                 disableSearch: false,
             },
         }
@@ -69,6 +69,12 @@ export default {
             type: Array,
             required: false,
             default: () => ([]),
+        },
+
+        value: {
+            type: String,
+            required: false,
+            default: '',
         }
 
     },
@@ -114,7 +120,9 @@ export default {
             const { results, resultsHighlight } = this.autocomplete
             const { input } = this.context
 
-            if (!input || !results.length) return
+            if (!input || !results.length) {
+                return this.returnLastSelection()
+            }
 
             this.resultHasBeenSelected(results[resultsHighlight])
         },
@@ -182,6 +190,14 @@ export default {
                 this.$emit('resultChanged', place)
             })
         },
+
+        returnLastSelection() {
+            const { selected: place } = this.autocomplete
+
+            if (!place) return
+
+            this.$emit('resultChanged', place)
+        }
 
     },
 
