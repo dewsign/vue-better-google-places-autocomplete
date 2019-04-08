@@ -74,6 +74,19 @@ This event is fired when a user has selected an address from a search. This will
 
 This event is fired when the user has removed all text from the search box or clicked the clear icon. Useful for re-centering the results map for example.
 
+## Pre-populating search and results
+
+Sometimes you may with to pre define the search query and/or result as defaults for the component. E.g. if you have multiple search components on different screen and need to maintain the same results for both.
+
+```html
+<google-places-autocomplete
+    @resultChanged="placeDetail => place = placeDetail"
+    @resultCleared="() => place = null"
+    value="London, UK"
+    :place="defaultPlace"
+/>
+```
+
 ## Customisation
 
 Two scoped-slots are provided to customise the search input box and the results

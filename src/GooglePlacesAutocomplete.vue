@@ -48,7 +48,7 @@ export default {
                 results: [],
                 resultsHighlight: 0,
                 status: null,
-                selected: {},
+                selected: this.place,
             },
             context: {
                 input: this.value,
@@ -75,7 +75,13 @@ export default {
             type: String,
             required: false,
             default: '',
-        }
+        },
+
+        place: {
+            type: Object,
+            required: false,
+            default: () => ({}),
+        },
 
     },
 
@@ -101,6 +107,24 @@ export default {
 
     watch: {
 
+        value: {
+            handler(value) {
+                if (!value) return
+
+                this.$set(this.context, 'input', value)
+            },
+            immediate: true,
+        },
+
+        place: {
+            handler(value) {
+                if (!value) return
+
+                this.$set(this.autocomplete, 'selected', value)
+            },
+            immediate: true,
+        },
+
         searchValue(newValue, oldValue) {
             if (newValue || !oldValue) return
 
@@ -117,14 +141,34 @@ export default {
         },
 
         selectItemFromList() {
-            const { results, resultsHighlight } = this.autocomplete
+            const { results, resultsHighlight, selected } = this.autocomplete
             const { input } = this.context
 
-            if (!input || !results.length) {
+            /**
+             * Bail if there is nothing to work with
+             */
+            if (!input && !results.length) {
+                return
+            }
+
+            /**
+             * Return the last result if things haven't changed
+             */
+            if (input === this.value && Object.keys(selected).length) {
                 return this.returnLastSelection()
             }
 
-            this.resultHasBeenSelected(results[resultsHighlight])
+            /**
+             * Show the search results again
+             */
+            if (input && !results.length) {
+                return this.inputHasChanged()
+            }
+
+            /**
+             * The expected standard user journey. The user selected a result from the list.
+             */
+            this.resultHasBeenSelected(results[resultsHighlight] || place)
         },
 
         shiftResultsSelection() {
